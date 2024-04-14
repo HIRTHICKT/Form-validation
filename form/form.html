@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Student Registration Portal</h1>
+    </header>
+    <main>
+        <form action="#show" class="reg-form" onsubmit="displayFormData(event)">
+            <label>First name: </label>
+            <input type="text" placeholder="Enter your first name" required/>
+            
+            <label>Middle name: </label><br>
+            <input type="text" placeholder="Enter your middle name" required/>
+            
+            <label>Last name: </label><br>
+            <input type="text" placeholder="Enter your last name" required/>
+            
+            <label>Date of Birth: </label><br>
+            <input type="date" required/>
+            
+            <label>Course: </label>
+            <select name="course" id="course" required>
+                <option selected disabled value="">Select your course</option>
+                <option value="Python">Python</option>
+                <option value="Java">Java</option>
+                <option value="C++">C++</option>
+                <option value="Nodejs">Node JS</option>
+                <option value="Web-front-end">Web front end</option>
+            </select>
+            
+            <label>Gender: </label><br>
+            <input type="radio" name="gender" value="male" checked>
+            <label>Male</label>
+            <input type="radio" name="gender" value="female">
+            <label>Female</label>
+            <input type="radio" name="gender" value="other">
+            <label>Other</label>
+            <br />
+            <label>Phone: </label><br>
+            <input 
+            type="text" 
+            required
+            placeholder="Enter your phone number"
+            />
+            
+            <label>Current Address: </label><br>
+            <textarea 
+                maxlength="150" 
+                name="current-address" 
+                placeholder="Enter your current address" 
+                required
+            ></textarea>
+            
+            <label>Email: </label><br>
+            <input type="email" required placeholder="Enter your email address"/>
+            
+            <label>
+                <input type="checkbox" name="agree" required>
+                I agree to the terms and conditions
+            </label>
+            
+            <input type="submit" value="Register"/>
+        </form>
+
+        <div id="displayData"  class="show" style="display: none;">
+            <h2>Thank you for Registering!</h2>
+            <p id="firstNameDisplay"></p>
+            <p id="middleNameDisplay"></p>
+            <p id="lastNameDisplay"></p>
+            <p id="dobDisplay"></p>
+            <p id="courseDisplay"></p>
+            <p id="genderDisplay"></p>
+            <p id="phoneDisplay"></p>
+            <p id="addressDisplay"></p>
+            <p id="emailDisplay"></p>
+        </div>
+    </main>
+
+    <script>
+        function displayFormData(event) {
+            event.preventDefault();
+
+            // Retrieve form values
+            var firstName = document.querySelector('input[placeholder="Enter your first name"]').value;
+            var middleName = document.querySelector('input[placeholder="Enter your middle name"]').value;
+            var lastName = document.querySelector('input[placeholder="Enter your last name"]').value;
+            var dob = document.querySelector('input[type="date"]').value;
+            var course = document.getElementById('course').value;
+            var gender = document.querySelector('input[name="gender"]:checked').value;
+            var phone = document.querySelector('input[placeholder="Enter your phone number"]').value;
+            var address = document.querySelector('textarea[name="current-address"]').value;
+            var email = document.querySelector('input[placeholder="Enter your email address"]').value;
+
+            // Display the entered information
+            document.getElementById('firstNameDisplay').textContent = 'First Name: ' + firstName;
+            document.getElementById('middleNameDisplay').textContent = 'Middle Name: ' + middleName;
+            document.getElementById('lastNameDisplay').textContent = 'Last Name: ' + lastName;
+            document.getElementById('dobDisplay').textContent = 'Date of Birth: ' + dob;
+            document.getElementById('courseDisplay').textContent = 'Course: ' + course;
+            document.getElementById('genderDisplay').textContent = 'Gender: ' + gender;
+            document.getElementById('phoneDisplay').textContent = 'Phone: ' + phone;
+            document.getElementById('addressDisplay').textContent = 'Address: ' + address;
+            document.getElementById('emailDisplay').textContent = 'Email: ' + email;
+
+            // Show the displayData div
+            document.getElementById('displayData').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
